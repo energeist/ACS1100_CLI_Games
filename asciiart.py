@@ -9,7 +9,7 @@ def getAsciiArt(text, font):
 text = input('ASCII Art Text > ')
 font = input('ASCII Art Font > ')
 
-if font == "random":
+if font.lower() == "random":
     data = requests.get('http://artii.herokuapp.com/fonts_list')
     fontsArray = data.text.split('\n')
 
@@ -21,7 +21,7 @@ elif font:
     font = font
     getAsciiArt(text, font)
 
-elif font == "":
+elif font == "" or font.lower() == "default":
     r = requests.get(f'http://artii.herokuapp.com/make?text={text}')
     print("Font: default")
     print(r.text)
